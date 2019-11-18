@@ -1,0 +1,26 @@
+{% extends 'principal.html' %}
+
+{% block titulo %}
+    <title>Eliminar Usuarios</title>
+  {% endblock %}
+
+  {% block encabezado %}
+  <h2>Bienvenido al Módulo de Creación de Usuarios</h2>
+  <h2>CCOT | COMPUMASTER</h2>
+  {% endblock %}
+{% block cuerpo %}
+<section>
+  <h3>Elimnación de Usuarios</h3>
+  <form method="POST">
+    {% csrf_token %}
+
+      <div class="col-12">
+        <ul class="actions">
+          <h3>¿Está seguro que desea eliminiar el registro? {{object}}</h3>
+          <li><a href="{% url 'CCOT:vusuarios'%}"></a><input type="submit" value="Eliminar" class="primary" /></li>
+          <li><a href="{% url 'CCOT:vusuarios'%}"><input type="button" value="Cancelar" class="primary" /></a></li>
+        </ul>
+      </div>
+ </form>
+</section>
+{% endblock %}

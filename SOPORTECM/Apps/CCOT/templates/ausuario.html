@@ -1,0 +1,33 @@
+{% extends 'principal.html' %}
+
+{% block titulo %}
+    <title>Activación de  Usuarios</title>
+  {% endblock %}
+
+  {% block encabezado %}
+  <h2>Bienvenido al Módulo de Actualización de Usuarios</h2>
+  <h2>CCOT | COMPUMASTER</h2>
+  {% endblock %}
+{% block cuerpo %}
+<section>
+  <h3>Registro</h3>
+  <form method="POST">
+    {% csrf_token %}
+
+      <!--{{form.as_p}}-->
+
+      <div class="row gtr-uniform gtr-50">
+          <div class="col-6 col-12-medium">
+          <input type="checkbox" id="activo" name="is_active" disabled {{form.is_active}}
+      </div>
+      <div class="col-12">
+        <ul class="actions">
+          <li><h3>¿Está seguro que desea inactivar el usuario {{object.user}}?</h3></li>
+          <li><input type="submit" value="Si" class="primary"/></li>
+          <li><a href="{% url 'CCOT:vusuarios'%}"><input type="button" value="Cancelar" class="primary" /></a></li>
+        </ul>
+      </div>
+      </div>
+  </form>
+</section>
+{% endblock %}

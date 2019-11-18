@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		{% block titulo %} {% endblock %}
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--<link rel="stylesheet" href="assets/css/main.css" />-->
+		<link rel="stylesheet" href="{% static "assets/css/main.css" %}" />
+		<!--<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>-->
+		<noscript><link rel="stylesheet" href="{% static "assets/css/noscript.css" %}" /></noscript>
+
+	</head>
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href=""><img src="{% static "img/cmsp.png"  %}" width="20%" height="auto"></a></h1>
+					<nav id="nav">
+						<ul>
+							<!--<li><a href="{% url 'CCOT:home' %}">Home</a></li>-->
+							{% if not request.user.is_authenticated %}
+							<li><a href="{% url 'login' %}" class="button primary">Iniciar Sesión</a></li>
+							{% else %}
+							<li><a href="">Bienvenido {{request.user.username}}</a></li>
+							<li><a href="#">Clientes</a>
+								<ul>
+									<li><a href="{% url 'CCOT:cclientes' %}">Ingresar Cliente</a></li>
+									<li><a href="{% url 'CCOT:vclientes' %}">Listar Clientes</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Ordenes</a>
+								<ul>
+									<li><a href="{% url 'CCOT:ordenes' %}">Ingresar Orden</a></li>
+									<li><a href="{% url 'CCOT:vordenes' %}">Ver Ordenes</a></li>
+							</li>
+								</ul>
+							<li><a href="#">Garantías</a>
+								<ul>
+									<li><a href="{% url 'CCOT:garantias' %}">Ingresar Garantía</a></li>
+									<li><a href="{% url 'CCOT:vgarantias' %}">Ver Garantías</a></li>
+							</li>
+								</ul>
+							<li><a href="#">Productos</a>
+								<ul>
+									<li><a href="{% url 'CCOT:productos' %}">Ingresar Productos</a></li>
+									<li><a href="{% url 'CCOT:vproductos' %}">Listar Productos</a></li>
+									<li><a href="{% url 'CCOT:ventas' %}">Venta</a></li>
+									<li><a href="{% url 'CCOT:vventas' %}">Listar Venta</a></li>
+							</li>
+								</ul>
+								{% if not request.user.is_superuser %}
+
+							{% else %}
+							<li><a href="">Empleados</a>
+								<ul>
+									<li><a href="{% url 'CCOT:cempleados' %}">Crear Empleados</a></li>
+									<li><a href="{% url 'CCOT:vempleados' %}">Listar Empleados</a></li>
+									<li><a href="{% url 'CCOT:rusuarios' %}">Crear Usuarios</a></li>
+									<li><a href="{% url 'CCOT:vusuarios' %}">Listar Usuarios</a></li>
+							</ul>
+							{% endif %}
+							</li>
+							<li><a href="{% url 'CCOT:acerca' %}">Acerca de</a>
+							</li>
+
+							<li><a href="{% url 'logout' %}" class="button primary">Cerrar Sesión</a></li>
+							{% endif %}
+						</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							{% block encabezado %} {% endblock %}
+							{% block umg %} {% endblock %}
+						</header>
+								{% block cuerpo %} {% endblock %}
+						</div>
+						</div>
+
+			<!-- Banner -->
+
+
+
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Todos los Derechos Reservados</li><li>2019</li><li><a href="">UMG</a></li>
+					</ul>
+				</footer>
+		</div>
+
+		<!-- Scripts -->
+			<!--<script src="assets/js/jquery.min.js"></script>-->
+			<script src="{% static "assets/js/jquery.min.js" %}"></script>
+			<!--<script src="assets/js/jquery.scrolly.min.js"></script>-->
+			<script src="{% static "assets/js/jquery.scrolly.min.js" %}"></script>
+			<!--<script src="assets/js/jquery.dropotron.min.js"></script>-->
+			<script src="{% static "assets/js/jquery.dropotron.min.js" %}"></script>
+			<!--<script src="assets/js/jquery.scrollex.min.js"></script>-->
+			<script src="{% static "assets/js/jquery.scrollex.min.js" %}"></script>
+			<!--<script src="assets/js/browser.min.js"></script>-->
+			<script src="{% static "assets/js/browser.min.js" %}"></script>
+			<!--<script src="assets/js/breakpoints.min.js"></script>-->
+			<script src="{% static "assets/js/breakpoints.min.js" %}"></script>
+			<!--<script src="assets/js/util.js"></script>-->
+			<script src="{% static "assets/js/util.js" %}"></script>
+			<!--<script src="assets/js/main.js"></script>-->
+			<script src="{% static "assets/js/main.js" %}"></script>
+			<!-- multiplicar-->
+			<script src="{% static "js/multiplicar.js" %}"></script>
+			<!-- fecha-->
+			<script src="{% static "js/fecha.js" %}"></script>
+
+	</body>
+</html>

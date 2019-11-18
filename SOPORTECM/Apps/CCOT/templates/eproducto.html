@@ -1,0 +1,40 @@
+{% extends 'principal.html' %}
+{% block titulo %}
+    <title>Editar Productos</title>
+  {% endblock %}
+
+{% block encabezado %}
+<h2>Bienvenido a la Actualización de Productos</h2>
+<h2>CCOT | COMPUMASTER</h2>
+{% endblock %}
+{% block cuerpo %}
+<section>
+  <h3>Modifique la Información Necesaria</h3>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="row gtr-uniform gtr-50">
+      <div class="col-6 col-12-xsmall">
+        <label for="producto">Producto</label>
+        <input type="text" name="producto" id="producto" required
+        {{ form.producto }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="modelo">Modelo</label>
+        <input type="text" name="modelo" id="modelo" required
+        {{ form.modelo }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="marca">Marca</label>
+        <input type="text" name="marca" id="marca" required
+        {{ form.marca }}
+      </div>
+      <div class="col-12">
+        <ul class="actions">
+          <li><input type="submit" value="Actualizar" class="primary" /></li>
+          <li><a href="{% url 'CCOT:vproductos'%}"><input type="button" value="Cancelar" class="primary" /></a></li>
+        </ul>
+      </div>
+    </div>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'principal.html' %}
+
+{% block titulo %}
+    <title>Ordenes</title>
+  {% endblock %}
+
+{% block encabezado %}
+<h2>Listado de Registro de Ordenes de Trabajo</h2>
+<h2>CCOT | COMPUMASTER</h2>
+{% endblock %}
+
+{% block cuerpo %}
+<!-- Table -->
+							<section>
+                <div class="col-12">
+                  <ul class="actions">
+                    <li><a href="{% url 'CCOT:ordenes'%}"
+                      style='font-size:36px' class='fa fa-user-plus'></a></li>
+                    <li><a href="{% url 'CCOT:ordenes_print'%}" style='font-size:36px'
+                    target="print" class="btn btn-default btn-circle">
+                    <span class="fa fa-print"></span></a>
+                      </li>
+                  </ul>
+                </div>
+                <div>
+                  <div class="row gtr-uniform gtr-25" >
+                <h4>Listado Ordenes Ingresadas</h4>
+
+								<div class="table-wrapper">
+									<table>
+                    {%csrf_token%}
+										<thead>
+											<tr>
+                        <th>Número Orden</th>
+                        <th>Fecha Ingreso</th>
+                        <th>Cliente</th>
+												<th>Equipo</th>
+												<th>Problema</th>
+                        <th>Solución</th>
+                        <th>Costo</th>
+                        <th>Notas</th>
+                        <th>Cancelado</th>
+                        <th>Entregado</th>
+                        <th>Fecha Entrega</th>
+                        <th>Técnico</th>
+											</tr>
+										</thead>
+                    <tbody>
+                      {%for Orden in object_list%}
+											<tr>
+                      <td>CMST-{{Orden.creacion.year}}-{{Orden.id}}</td>
+                      <td>{{Orden.creacion}}</td>
+                      <td>{{Orden.cliente}}</td>
+                      <td>{{Orden.descripcion}}</td>
+                      <td>{{Orden.problema}}</td>
+                      <td>{{Orden.solucion}}</td>
+                      <td>{{Orden.costo}}</td>
+                      <td>{{Orden.observacion}}</td>
+                      <td>{{Orden.cancelado}}</td>
+                      <td>{{Orden.entregado}}</td>
+                      <td>{{Orden.egreso}}</td>
+                      <td>{{Orden.empleado}}</td>
+                      <td>
+                        <div class="col-12">
+                          <ul class="actions">
+                            <li><a href="{% url 'CCOT:eordenes' Orden.id %}"
+                              style='font-size:36px' class='far'>&#xf044
+                            </a></li>
+                            <li>
+                            <a href="{% url 'CCOT:orden_print_one' Orden.id %}" style='font-size:36px'
+                            target="print" class="btn btn-default btn-circle">
+                            <span class="fa fa-print"></span></a> </li>
+                          </ul>
+                        </div>
+                      </td>
+                      </tr>
+                      {%empty%}
+                      <tr><td>No hay Productos Registrados</td></tr>
+                      {%endfor%}
+										</tbody>
+									</table>
+                  <!-- Menú de paginación -->
+                  {% if is_paginated %}
+                  <nav aria-label="Page navigation" id="">
+                    <ul class="actions special">
+                      {% if page_obj.has_previous %}
+                        <li class="page-item ">
+                          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                        </li>
+                      {% else %}
+                        <li class="page-item disabled">
+                          <a class="page-link" href="#" tabindex="-1">&laquo;</a>
+                        </li>
+                      {% endif %}
+                      {% for i in paginator.page_range %}
+                        <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+                          <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                      {% endfor %}
+                      {% if page_obj.has_next %}
+                        <li class="page-item ">
+                          <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+                        </li>
+                      {% else %}
+                        <li class="page-item disabled">
+                          <a class="page-link" href="#" tabindex="-1">&raquo;</a>
+                        </li>
+                      {% endif %}
+                    </ul>
+                  </nav>
+                  {% endif %}
+                  <!--Fin de la paginación-->
+								</div>
+							</section>
+{% endblock %}

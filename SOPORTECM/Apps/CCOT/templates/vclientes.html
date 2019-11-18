@@ -1,0 +1,98 @@
+{% extends 'principal.html' %}
+
+{% block titulo %}
+    <title>Clientes</title>
+  {% endblock %}
+
+{% block encabezado %}
+<h2>Listado de Clientes</h2>
+<h2>CCOT | COMPUMASTER</h2>
+{% endblock %}
+{% block cuerpo%}
+<section>
+
+  <div class="col-12">
+    <ul class="actions">
+      <li><a href="{% url 'CCOT:cclientes'%}"
+      style='font-size:36px' class='fa fa-user-plus'></a></li>
+      <li>
+        </li>
+    </ul>
+  </div>
+  <h3>Lista de Clientes Existentes</h3>
+    <!--<h4>Default</h4>-->
+  <div class="table-wrapper">
+    {% if 'register' in request.GET %}
+    <p align="center">Cliente Registrado Correctamente</p>
+    {% endif %}
+    <table>
+      {%csrf_token%}
+      <thead>
+        <tr>
+          <th>Correlativo</th>
+          <th>Nombres</th>
+          <!--<th>Apellidos</th>-->
+          <th>Teléfono</th>
+          <th>Dirección</th>
+          <th>Creación</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for Cliente in object_list%}
+        <tr>
+          <td>{{Cliente.id}}</td>
+          <td>{{Cliente.nombres}} {{Cliente.apellidos}}</td>
+          <!--<td>{{Empleado.apellidos}}</td>-->
+          <td>{{Cliente.telefono}}</td>
+          <td>{{Cliente.direccion}}</td>
+          <td>{{Cliente.creacion}}</td>
+          <td>
+            <div class="col-12">
+              <ul class="actions">
+                <li><a href="{% url 'CCOT:eclientes' Cliente.id %}"
+                  style='font-size:36px' class='far'>&#xf044
+                </a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        {%empty%}
+        <tr><td>No hay Productos Registrados</td></tr>
+        {%endfor%}
+      </tbody>
+    </table>
+    <!-- Menú de paginación -->
+    {% if is_paginated %}
+    <nav aria-label="Page navigation" id="">
+      <ul class="actions special">
+        {% if page_obj.has_previous %}
+          <li class="page-item ">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">&laquo;</a>
+          </li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+          <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+          </li>
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li class="page-item ">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">&raquo;</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% endif %}
+    <!--Fin de la paginación-->
+  </div>
+</section>
+{% endblock %}

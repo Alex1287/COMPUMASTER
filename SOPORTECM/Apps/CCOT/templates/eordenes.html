@@ -1,0 +1,77 @@
+{% extends 'principal.html' %}
+
+{% block titulo %}
+    <title>Editar Ordenes</title>
+  {% endblock %}
+
+{% block encabezado %}
+<h2>Bienvenido a la Actualización de Ordenes de Trabajo</h2>
+<h2>CCOT | COMPUMASTER</h2>
+{% endblock %}
+
+{% block cuerpo %}
+        <!-- Form -->
+							<section>
+								<h3>Modifique la Información Necesaria</h3>
+								<form method="post" action="#">
+                  {% csrf_token %}
+									<div class="row gtr-uniform gtr-50">
+                    <div class="col-6 col-12-xsmall">
+                      <label for="costo">Costo</label>
+											<input type="text" name="costo" id="costo"
+                      {{form.costo}}
+										</div>
+                    <div class="col-6 col-12-xsmall">
+                      <label for="egreso">Fecha de Entrega</label>
+											<input type="date" name="egreso" id="egreso"
+                      {{form.egreso}}
+										</div>
+										<div class="col-6 col-12-xsmall">
+                      <label for="nombre">Nombre Cliente</label>
+											{{ form.cliente }}
+										</div>
+                    <div class="col-6 col-12-xsmall">
+                      <label for="empleado">Empleado</label>
+                      {{ form.empleado }}
+                    </div>
+		                <div class="col-6 col-12-xsmall">
+                      <label for="descripcion">Datos de Equipo</label>
+											<input type="text" name="descripcion" id="descripcion"
+                      {{form.descripcion}}
+										</div>
+                    <div class="col-6 col-12-xsmall">
+                      <label for="problema">Problema de Equipo</label>
+											<input type="text" name="problema" id="problema"
+                      {{form.problema}}
+										</div>
+                    <div class="col-6 col-12-xsmall">
+                      <label for="solucion">Solución</label>
+											<input type="text" name="solucion" id="solucion"
+                      {{form.solucion}}
+										</div>
+                    <div class="col-12">
+                      <label for="observacion">Notas</label>
+											{{form.observacion}}
+										</div>
+                    <div class="col-6 col-12-medium">
+											<input type="checkbox" id="cancelado" name="cancelado">
+                      <label for="cancelado">Cancelado</label>
+                      {{form.cancelado}}
+
+										</div>
+										<div class="col-6 col-12-medium">
+											<input type="checkbox" id="entregado" name="entregado">
+                      <label for="entregado">Entregado</label>
+                      {{form.entregado}}
+										</div>
+										<div class="col-12"><br>
+											<ul class="actions">
+												<li><input type="submit" value="Actualizar" class="primary" /></li>
+												<li><input type="reset" value="Cancelar" class="primary"  /></li>
+											</ul>
+										</div>
+									</div>
+								</form>
+							</section>
+
+{% endblock %}

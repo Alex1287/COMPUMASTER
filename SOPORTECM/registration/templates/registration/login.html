@@ -1,0 +1,14 @@
+{% extends 'principal.html' %}
+
+{% block titulo %}
+    <title>Home</title>
+  {% endblock %}
+
+  {% block encabezado %}
+  <h2>Bienvenido al Control de Clientes y Ordenes de Trabajo</h2>
+  <h2>CCOT | COMPUMASTER</h2>
+  {% endblock %}
+{% block cuerpo %}
+{{form.as_p}}
+<input type="submit" name="ingresar" value="Ingresar" class="primary">
+{% endblock %}

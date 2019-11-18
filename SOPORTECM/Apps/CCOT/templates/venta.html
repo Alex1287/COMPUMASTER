@@ -1,0 +1,54 @@
+{% extends 'principal.html' %}
+{% block titulo %}
+    <title>Ventas</title>
+  {% endblock %}
+
+{% block encabezado %}
+<h2>Bienvenido al Registro de Ventas</h2>
+<h2>CCOT | COMPUMASTER</h2>
+{% endblock %}
+{% block cuerpo %}
+<section>
+  <h3>Ingres la Información Solicitada</h3>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="row gtr-uniform gtr-50">
+      <div class="col-6 col-12-xsmall">
+
+        <label for="cliente">Cliente</label>
+        {{ form.cliente }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="producto">Producto</label>
+
+        {{ form.producto }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="cantidad">Cantidad</label>
+        <input type="text" name="cantidad" id="cantidad" required onChange="multiplicar();"
+        {{ form.cantidad }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="valor">Valor</label>
+        <input type="text" name="valor" id="valor" required onChange="multiplicar();"
+        {{ form.valor }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="total">Total</label>
+        <input type="text" name="total" id="total" required readonly
+        {{ form.total }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="empleado">Empleado</label>
+        {{ form.empleado }}
+      </div>
+      <div class="col-12">
+        <ul class="actions">
+          <li><input type="submit" value="Crear" class="primary" /></li>
+          <li><a href="{% url 'CCOT:home'%}"><input type="button" value="Cancelar" class="primary" /></a></li>
+        </ul>
+      </div>
+    </div>
+  </form>
+</section>
+{% endblock %}

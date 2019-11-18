@@ -1,0 +1,83 @@
+{% extends 'principal.html' %}
+
+{% block titulo %}
+    <title>Ordenes</title>
+  {% endblock %}
+
+{% block encabezado %}
+<h2>Bienvenido al Registro de Ordenes de Trabajo</h2>
+<h2>CCOT | COMPUMASTER</h2>
+{% endblock %}
+
+{% block cuerpo %}
+        <!-- Form -->
+							<section>
+                <a href="{% url 'CCOT:occlientes'%}"
+                style='font-size:36px' class='fa fa-user-plus'></a>
+                <h3>Ingrese la Información Solicitada</h3>
+                {% if 'register' in request.GET %}
+                <p align="center">Cliente Registrado Correctamente</p>
+                {% endif %}
+								<form method="post" action="#">
+                  {% csrf_token %}
+									<div class="row gtr-uniform gtr-50">
+                    <div class="col-6 col-12-xsmall">
+                      <label for="costo">Costo</label>
+											<input type="text" name="costo" id="costo" placeholder="Ingrese Costo"
+                      {{form.costo}}
+										</div>
+                    <div class="col-6 col-12-xsmall">
+                      <label for="egreso">Fecha de Entrega</label>
+											<input type="date" name="egreso" id="egreso" placeholder="Fecha Egreso"
+                      {{form.egreso}}
+										</div>
+										<div class="col-6 col-12-xsmall">
+                      <label for="nombre">Nombre Cliente</label>
+											{{ form.cliente }}
+										</div>
+                    <div class="col-6 col-12-xsmall">
+                      <label for="empleado">Empleado</label>
+                      {{ form.empleado }}
+                    </div>
+		                <div class="col-6 col-12-xsmall">
+                      <label for="descripcion">Datos de Equipo</label>
+											<input type="text" name="descripcion" id="descripcion" placeholder="Ingrese Datos de Equipo" required
+                      {{form.descripcion}}
+										</div>
+                    <div class="col-6 col-12-xsmall">
+                      <label for="problema">Problema de Equipo</label>
+											<input type="text" name="problema" id="problema" placeholder="Ingrese Problema" required
+                      {{form.problema}}
+										</div>
+                    <div class="col-6 col-12-xsmall">
+                      <label for="solucion">Solución</label>
+											<input type="text" name="solucion" id="solucion" placeholder="Ingrese Trabajo a Realizar" required
+                      {{form.solucion}}
+										</div>
+                    <div class="col-12">
+                      <label for="observacion">Notas</label>
+											<textarea name="observacion" id="observacion" placeholder="Ingrese Notas Adicionales" rows="4"
+                      {{form.observacion}}</textarea>
+										</div>
+                    <div class="col-6 col-12-medium">
+											<input type="checkbox" id="cancelado" name="cancelado">
+                      <label for="cancelado">Cancelado</label>
+                      {{form.cancelado}}
+
+										</div>
+										<div class="col-6 col-12-medium">
+											<input type="checkbox" id="entregado" name="entregado">
+                      <label for="entregado">Entregado</label>
+                      {{form.entregado}}
+										</div>
+										<div class="col-12"><br>
+											<ul class="actions">
+												<li><input type="submit" value="Ingresar" class="primary" /></li>
+												<li><a href="{% url 'CCOT:home'%}"><input type="button" value="Cancelar" class="primary" /></a></li>
+											</ul>
+										</div>
+									</div>
+								</form>
+							</section>
+
+{% endblock %}

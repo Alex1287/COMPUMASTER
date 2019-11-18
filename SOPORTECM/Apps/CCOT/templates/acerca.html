@@ -1,0 +1,27 @@
+
+  {% extends 'principal.html' %}
+  {% load staticfiles %}
+  {% block titulo %}
+    <title>Acerca de</title>
+  {% endblock %}
+  {% block umg %}
+  <h1 id="umg"><a href=""><img src="{% static "img/umg.png"  %}" width="125" height="125"></a></h1>
+  {% endblock %}
+  {% block encabezado %}
+
+  <h3>UMG | Desarrollo Web | DJANGO</h3>
+  <h3>CCOT | COMPUMASTER</h3>
+  {% endblock %}
+
+  {% block cuerpo %}
+  <div class="row gtr-uniform gtr-50">
+  <div class="col-6 col-12-xsmall">
+  <h2 align="center">Alex Bernardo García Robles</h2>
+  <h2 align="center">0903-12-4629</h2>
+  </div>
+  <div class="col-6 col-12-xsmall">
+  <h2 align="center">Julio César Soto Bravo</h2>
+  <h2 align="center">0903-06-12892</h2>
+  </div>
+  </div>
+  {% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'principal.html' %}
+{% load staticfiles %}
+{% block umg %}
+<h1 id="umg"><a href=""><img src="{% static "img/umg.png"  %}" width="125" height="125"></a></h1>
+{% endblock %}
+{% block titulo %}
+    <title>Home</title>
+  {% endblock %}
+
+  {% block encabezado %}
+  <h2 >Bienvenido al Control de Clientes y Ordenes de Trabajo</h2>
+  <h2>CCOT | COMPUMASTER | UMG</h2>
+  {% endblock %}
+{% block cuerpo %}
+
+<h2 align="center">La tienda mas grande del Departamento</h2>
+<p align="justify">Contamos con venta de equipos de computo, computadoras portátiles,
+  de escritorio y de alto rendimiento, también contamos con todo tipo de
+  accesorios y suministros relacionados a la computación, la mejore variedad y
+  los mejores precios </p>
+
+<h2 align="center">Soporte Tecnico</h2>
+<p align="justify">Contamos con Técnicos altamente capacitados, quienes le brindaran la mejor
+  atención y solución a sus problemas y revivirán todo aquello que usted creía
+  muerto.</p>
+
+  <h2 align="center">Universidad Mariano Gálvez</h2>
+  <h2 align="center">San Pedro Sacatepéquez, San Marcos</h2>
+  <p align="justify"> y conoceréis la verdad, y la verdad os hará libres</p>
+  <h3 align="left">Juan 8:32</h3>
+
+{% endblock %}

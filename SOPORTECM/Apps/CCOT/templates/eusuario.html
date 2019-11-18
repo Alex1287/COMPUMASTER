@@ -1,0 +1,50 @@
+{% extends 'principal.html' %}
+
+{% block titulo %}
+    <title>Crear Usuarios</title>
+  {% endblock %}
+
+  {% block encabezado %}
+  <h2>Bienvenido al Módulo de Actualización de Usuarios</h2>
+  <h2>CCOT | COMPUMASTER</h2>
+  {% endblock %}
+{% block cuerpo %}
+<section>
+  <h3>Registro</h3>
+  <form method="POST">
+    {% csrf_token %}
+
+    <div class="row gtr-uniform gtr-50">
+      <div class="col-6 col-12-xsmall">
+        <label for="usuario">Usuario</label>
+
+        {{ form.usuario }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="contrasena">Contraseña</label>
+
+        {{ form.contrasena }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="rol">Roles</label>
+        {{ form.rol }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="empleado">Empleado</label>
+        {{ form.empleado }}
+      </div>
+      <div class="col-6 col-12-medium">
+        <input type="checkbox" id="activo" name="activo" {{form.activo}}
+        <label for="activo">Activo</label>
+
+      </div>
+      <div class="col-12">
+        <ul class="actions">
+          <li><input type="submit" value="Actualizar" class="primary" /></li>
+          <li><a href="{% url 'CCOT:vusuarios'%}"><input type="button" value="Cancelar" class="primary" /></a></li>
+        </ul>
+      </div>
+    </div>
+  </form>
+</section>
+{% endblock %}

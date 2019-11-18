@@ -1,0 +1,46 @@
+{% extends 'principal.html' %}
+
+{% block titulo %}
+    <title>Clientes Garantías</title>
+  {% endblock %}
+
+{% block encabezado %}
+<h2>Registro</h2>
+<h2>CCOT | COMPUMASTER</h2>
+{% endblock %}
+{% block cuerpo%}
+<section>
+  <h3>Ingrese al Información Necesaria</h3>
+  <form method="POST">
+    {% csrf_token %}
+
+    <div class="row gtr-uniform gtr-50">
+      <div class="col-6 col-12-xsmall">
+        <label for="nombres">Nombres</label>
+        <input type="text" name="nombres" id="nombres" placeholder="Ingrese Nombres del Cliente" required
+         {{ form.nombres }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" name="apellidos" id="apellidos" placeholder="Ingrese Apellidos del Cliente" required
+        {{ form.apellidos }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="telefono">Teléfono</label>
+        <input type="text" name="telefono" id="telefono" placeholder="Ingrese Número de Teléfono del Cliente" required
+        {{ form.telefono }}
+      </div>
+      <div class="col-6 col-12-xsmall">
+        <label for="direccion">Dirección</label>
+        <input type="text" name="direccion" id="direccion" placeholder="Ingrese Dirección del Cliente" required
+        {{ form.direccion }}
+      </div>
+      <div class="col-12"><br>
+        <ul class="actions">
+          <li><input type="submit" value="Crear" class="primary" /></li>
+        </ul>
+      </div>
+    </div>
+</form>
+</section>
+{% endblock%}
